@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f3f5; /* Light background color */
+        }
+        /* Header styles */
+        header {
+            background-color: #006400; /* Sage green color */
+            color: #fff; /* White text color */
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        /* Navigation styles */
+        nav {
+            background-color: #fff; /* White background color */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #006400; /* Sage green color */
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        /* Container styles */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff; /* White background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        /* Form styles */
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #006400; /* Sage green color */
+        }
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input-group input[type="number"] {
+            width: calc(100% - 22px); /* Adjust width to accommodate the increase in size */
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #006400; /* Sage green color */
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #004d00; /* Darker shade of sage green on hover */
+        }
+        /* Result styles */
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        /* Footer styles */
+        footer {
+            background-color: #006400; /* Sage green color */
+            color: #fff; /* White text color */
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BMI Calculator</h1>
+    </header>
+    <nav>
+        <a href="About Us.html" class="button" target="_parent">About us</a>
+        <a href="Importance.html" class="button" target="_parent">Importance of BMI</a>
+        <a href="Educational Resources.html" class="button" target="_parent">Educational Resources</a>
+        <a href="Mental Health.html" class="button" target="_parent">Mental Well Being</a>
+        <a href="Privacy and Security.html" class="button" target="_parent">Privacy and Security</a>
+        <a href="Customer Care and Resources.html" class="button" target="_parent">Customer Care Center</a>
+        <a href="EatingPlan.html" class="button" target="_parent">Eating plan</a>
+    </nav>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter your height" required>
+        </div>
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter your weight" required>
+        </div>
+        <div class="input-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+        </div>
+        <div class="input-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <button class="btn" onclick="calculateBMI()">Calculate BMI</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+        &copy; 2024 BMI Calculator. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+
+            const heightInMeters = height / 100; // Convert height to meters
+
+            const bmi = weight / (heightInMeters * heightInMeters);
+
+            let bmiCategory;
+            if (bmi < 18.5) {
+                bmiCategory = 'Underweight, You need to gain weight';
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                bmiCategory = 'Normal weight, You are Healthy';
+            } else if (bmi >= 24.9 && bmi < 29.9) {
+                bmiCategory = 'Overweight, You need to lose weight';
+            } else {
+                bmiCategory = 'Obesity, You are at health risk';
+            }
+
+            const result = `
+                <h3>Result</h3>
+                <p><strong>BMI:</strong> ${bmi.toFixed(2)}</p>
+                <p><strong>Category:</strong> ${bmiCategory}</p>
+            `;
+
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

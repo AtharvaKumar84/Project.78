@@ -1,0 +1,43 @@
+/* Resetting default styles */
+body, h1, p, footer {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background color */
+    color: #333; /* Text color */
+    line-height: 1.6;
+}
+header {
+    background-color: #006400; /* Sage green color */
+    color: #fff; /* White text color */
+    padding: 20px 0;
+    text-align: center;
+}
+header h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background color */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+footer {
+    background-color: #006400; /* Sage green color */
+    color: #fff; /* White text color */
+    padding: 20px 0;
+    text-align: center;
+}
+footer h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+footer p {
+    font-size: 18px;
+    margin: 5px 0;
+}
